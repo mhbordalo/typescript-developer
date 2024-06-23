@@ -92,10 +92,17 @@
 - `compile` => configura a compilação para o projeto inteiro,
 - `watch` => escuta as modificações na pasta dist e atualiza a compilação.
 
---------------------------------------------------------------------------
-Todo código de TypeScript fica dentro da pasta app.
-Já o código JavaScript fica dentro da pasta dist.
-Então, quando compilar os arquivos ts que estão na pasta app,
-eles vão todos de forma automatica para pasta dist com a extensão js.
-Assim, quando houver uma modificação no arquivo ts,
-automaticamente atualiza o arquivo js.
+### Configuração para debugar TypeScript ###
+
+- Configurar *package.json* para o lite-server compartilhar as pastas *dist* e *app*,
+- `"scripts": {"server": "lite-server --baseDir=app"},`
+- Configurar *tsconfig.json* acrescentando `"sourceMap": true,`
+- Isso disponibiliza codigo-fonte para debugar em dev, **nunca** utilizar em prod.
+- Abrir inspecionar e com o console aberto executar `crtl+p` para buscar o arquivo que vai debugar.
+- Utilizar *break-point* e seguir debug padrão de JavaScript.
+
+### Observação ###
+
+- O código TypeScript fica na pasta app e o código JavaScript fica na pasta dist,
+- Quando compila os arquivos que estão na pasta app, eles vão todos de forma automatica para a pasta dist com a extensão js.
+- Ao modificar um arquivo ts, automaticamente atualiza o arquivo js.
